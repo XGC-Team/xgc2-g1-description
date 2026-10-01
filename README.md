@@ -14,7 +14,7 @@ visual default.
 | Visual URDF | `urdf/g1_visual.urdf` |
 | Robot name | `g1` |
 | Canonical source | g1_29dof_with_hand_rev_1_0 (up-to-date full model) |
-| Debian package | `ros-noetic-xgc2-g1-description` |
+| Debian package | `ros-jazzy-xgc2-g1-description` |
 
 Meshes and kinematics remain Unitree's (BSD-3-Clause). Mesh paths use
 `package://g1_description/meshes/...`.
@@ -22,21 +22,23 @@ Meshes and kinematics remain Unitree's (BSD-3-Clause). Mesh paths use
 ## Build
 
 ```bash
-source /opt/ros/noetic/setup.bash
-catkin_make_isolated --pkg g1_description
+source /opt/ros/jazzy/setup.bash
+colcon build --packages-select g1_description
+source install/setup.bash
+ros2 pkg prefix g1_description
 ```
 
 ## Install
 
 ```
 sudo apt update
-sudo apt install ros-noetic-xgc2-g1-description
+sudo apt install ros-jazzy-xgc2-g1-description
 ```
 
 ## Use
 
 ```text
-$(rospack find g1_description)/urdf/g1_visual.urdf
+$(ros2 pkg prefix g1_description)/share/g1_description/urdf/g1_visual.urdf
 ```
 
 Joint states and TF still come from drivers; this package only supplies
